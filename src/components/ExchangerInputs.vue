@@ -4,26 +4,26 @@
         <div id="exchanger">
             <div class="label-with-input">
                 <label for="select-to-give">{{ textGIVE }}</label>
-                <select id='select-to-give' v-model="selectedCurrencyGIVE">
-                    <option v-for="currency in arrayСurrenciesGIVE" :key="currency">{{ currency }}</option>
+                <select id='select-to-give' v-model="from" @change="setFrom">
+                    <option v-for="currency in arrayRatesFrom" :key="currency">{{ currency }}</option>
                 </select>
             </div>
             <div class="label-with-input">
-                <label for="input-count">{{ textCount }} {{ selectedCurrencyGIVE }}</label>
-                <input type="number" id="input-count" min="1" />
+                <label for="input-count">{{ textCount }} {{ from }}</label>
+                <input type="number" id="input-count"  v-model="inputAmountFrom" @input="setAmountFrom" />
             </div>
             <div>
                 <h6>стрелка</h6>
             </div>
             <div class="label-with-input">
                 <label for="select-to-get">{{ textGET }}</label>
-                <select id='select-to-get' v-model="selectedCurrencyGET">
-                    <option v-for="currency in arrayСurrenciesGIVE" :key="currency">{{ currency }}</option>
+                <select id='select-to-get' v-model="to" @change="setTo">
+                    <option v-for="currency in arrayRatesTo" :key="currency">{{ currency }}</option>
                 </select>
             </div>
             <div class="label-with-input">
-                <label for="input-count">{{ textCount }} {{ selectedCurrencyGET }}</label>
-                <input type="number" id="input-count" min="1" />
+                <label for="input-count">{{ textCount }} {{ to }}</label>
+                <input type="number" id="input-count" min="0" v-model="inputAmountTo" @input="setAmountTo" />
             </div>
         </div>
         <button disabled>{{ textButton.toUpperCase() }}</button>
@@ -33,13 +33,41 @@
 <script>
 export default {
     name: 'ExchangerInputs',
-    data() {
-        return {
-            arrayСurrenciesGIVE: ['BTC', 'ETH', 'EUR', 'UAH'],
-            arrayСurrenciesGET: ['BTC', 'ETH', 'EUR', 'UAH'],
-            selectedCurrencyGIVE: 'BTC',
-            selectedCurrencyGET: 'UAH',
-            
+    computed: {
+        allRates: function allRates() {
+            return this.$store.getters.allRates;
+        },
+        arrayRatesFrom: function arrayRatesFrom() {
+            return this.$store.getters.arrayRatesFrom;
+        },
+        from: function from() {
+            return this.$store.getters.from;
+        },
+        arrayRatesTo: function arrayRatesTo() {
+            return this.$store.getters.arrayRatesTo;
+        },
+        to: function to() {
+            return this.$store.getters.to;
+        },
+        inputAmountFrom: function inputAmountFrom() {
+            return this.$store.getters.inputAmountFrom;
+        },
+        inputAmountTo: function inputAmountTo() {
+            return this.$store.getters.inputAmountTo;
+        }
+    },
+    methods: {
+        setFrom(e) {
+            this.$store.commit('setFrom', e.target.value)
+        },
+        setTo(e) {
+            this.$store.commit('setTo', e.target.value)
+        },
+        setAmountFrom(e) {
+            this.$store.commit('setAmountFrom', e.target.value)
+        },
+        setAmountTo(e) {
+            this.$store.commit('setAmountTo', e.target.value)
         }
     },
     props: {
@@ -48,7 +76,7 @@ export default {
         textCount: String,
         textGET: String,
         textButton: String
-    }
+    },
 
 }
 </script>

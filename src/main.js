@@ -2,6 +2,7 @@ import Vue from 'vue'
 import App from './App.vue'
 import VueRouter from 'vue-router';
 import {i18n} from './plugins/i18n';
+import store from './store/store';
 import PageSuccess from './pages/PageSuccess.vue';
 import PageExchange from './pages/PageExchange.vue';
 
@@ -17,6 +18,7 @@ const router = new VueRouter({
 
 new Vue({
   i18n,
+  store,
   render: h => h(App),
   router: router,
 }).$mount('#app')

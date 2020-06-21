@@ -1,12 +1,12 @@
 <template>
     <div id='bottom-content'>
-        <div>
+        <div v-if="rateAmount">
             <h5>{{ rate }}</h5>
-            <p>1BTC = 2 378 UAH</p>
+            <p>1 {{from}} = {{rateAmount}} {{to}}</p>
         </div>
-        <div>
+        <div v-if="reserveAmount">
             <h5>{{ reserve }}</h5>
-            <p>30 000 UAH</p>
+            <p>{{reserveAmount}} {{to}}</p>
         </div>
     </div>
 </template>
@@ -14,6 +14,20 @@
 <script>
 export default {
     name: 'ExchangeRates',
+    computed: {
+        from: function from() {
+            return this.$store.getters.from;
+        },
+        to: function to() {
+            return this.$store.getters.to;
+        },
+        rateAmount: function rateAmount() {
+            return this.$store.getters.rateAmount;
+        },
+        reserveAmount: function reserveAmount() {
+            return this.$store.getters.reserveAmount;
+        }
+    },
     props: {
         rate: String,
         reserve: String
