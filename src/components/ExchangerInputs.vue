@@ -4,26 +4,26 @@
         <div id="exchanger">
             <div class="label-with-input">
                 <label for="select-to-give">{{ textGIVE }}</label>
-                <select id='select-to-give' :value="from" @change="setFrom">
+                <select id='select-to-give' v-model="from" @change="setFrom">
                     <option v-for="currency in arrayRatesFrom" :key="currency">{{ currency }}</option>
                 </select>
             </div>
             <div class="label-with-input">
-                <label for="input-count">{{ textCount }} {{ from }}</label>
-                <input type="number" id="input-count"  :value="inputAmountFrom" @change="setAmountFrom" />
+                <label for="input-count-from">{{ textCount }} {{ from }}</label>
+                <input type="number" id="input-count-from" v-model="inputAmountFrom" @input="setAmountFrom" />
             </div>
             <div>
-                <h6>стрелка</h6>
+                <h1 @click="change" id="change-button">↻</h1>
             </div>
             <div class="label-with-input">
                 <label for="select-to-get">{{ textGET }}</label>
-                <select id='select-to-get' :value="to" @change="setTo">
+                <select id='select-to-get' v-model="to" @change="setTo">
                     <option v-for="currency in arrayRatesTo" :key="currency">{{ currency }}</option>
                 </select>
             </div>
             <div class="label-with-input">
-                <label for="input-count">{{ textCount }} {{ to }}</label>
-                <input type="number" id="input-count" min="0" :value="inputAmountTo" @input="setAmountTo" />
+                <label for="input-count-to">{{ textCount }} {{ to }}</label>
+                <input type="number" id="input-count-to" v-model="inputAmountTo" @input="setAmountTo" />
             </div>
         </div>
         <button disabled>{{ textButton.toUpperCase() }}</button>
@@ -68,6 +68,9 @@ export default {
         },
         setAmountTo(e) {
             this.$store.commit('setAmountTo', e.target.value)
+        },
+        change() {
+            this.$store.commit('change');
         }
     },
     props: {
@@ -82,6 +85,13 @@ export default {
 </script>
 
 <style>
+#change-button {
+    cursor: pointer;
+    transition: all 0.5s ease-in-out;
+}
+#change-button:hover {
+    color: rgb(65, 67, 156);
+}
 #exchanger-wrapper {
     display: flex;
     flex-direction: column;

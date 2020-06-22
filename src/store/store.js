@@ -49,7 +49,9 @@ export default new Vuex.Store({
         arrayRatesFrom: state => {
             let arr = [];
             for(let item of state.arrayRates) {
-                arr.push(item.name)
+                if(item.name !== state.to) {
+                    arr.push(item.name)    
+                }     
             }
             return arr;
         },
@@ -124,6 +126,11 @@ export default new Vuex.Store({
                     state.inputAmountFrom = newValue * element[prop];
                 }
             }
+        },
+        change: state => {
+            let tmp = state.from;
+            state.from = state.to;
+            state.to = tmp;
         }
     }
 })
