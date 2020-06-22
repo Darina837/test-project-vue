@@ -108,20 +108,22 @@ export default new Vuex.Store({
             state.to = newValue
         },
         setAmountFrom: (state, newValue) => {
-            if(state.inputAmountFrom !== '') {
-                let element = state.arrayRates.find( el => el.name === state.from );
-                for(let prop in element) {
-                    if(prop === state.to) {
-                        state.inputAmountTo = Number(newValue) * Number(element[prop])
-                    }
+            let element = state.arrayRates.find( el => el.name === state.from );
+            state.inputAmountFrom = Number(newValue);
+            for(let prop in element) {
+                if(prop === state.to) {
+                    state.inputAmountTo = newValue * element[prop];
                 }
-            } else {
-                state.inputAmountFrom = Number(newValue);    
             }
-            
         },
         setAmountTo: (state, newValue) => {
-            state.inputAmountTo = newValue
+            let element = state.arrayRates.find( el => el.name === state.to );
+            state.inputAmountTo = Number(newValue);
+            for(let prop in element) {
+                if(prop === state.from) {
+                    state.inputAmountFrom = newValue * element[prop];
+                }
+            }
         }
     }
 })

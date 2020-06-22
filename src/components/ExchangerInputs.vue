@@ -4,26 +4,26 @@
         <div id="exchanger">
             <div class="label-with-input">
                 <label for="select-to-give">{{ textGIVE }}</label>
-                <select id='select-to-give' v-model="from" @change="setFrom">
+                <select id='select-to-give' :value="from" @change="setFrom">
                     <option v-for="currency in arrayRatesFrom" :key="currency">{{ currency }}</option>
                 </select>
             </div>
             <div class="label-with-input">
                 <label for="input-count">{{ textCount }} {{ from }}</label>
-                <input type="number" id="input-count"  v-model="inputAmountFrom" @input="setAmountFrom" />
+                <input type="number" id="input-count"  :value="inputAmountFrom" @change="setAmountFrom" />
             </div>
             <div>
                 <h6>стрелка</h6>
             </div>
             <div class="label-with-input">
                 <label for="select-to-get">{{ textGET }}</label>
-                <select id='select-to-get' v-model="to" @change="setTo">
+                <select id='select-to-get' :value="to" @change="setTo">
                     <option v-for="currency in arrayRatesTo" :key="currency">{{ currency }}</option>
                 </select>
             </div>
             <div class="label-with-input">
                 <label for="input-count">{{ textCount }} {{ to }}</label>
-                <input type="number" id="input-count" min="0" v-model="inputAmountTo" @input="setAmountTo" />
+                <input type="number" id="input-count" min="0" :value="inputAmountTo" @input="setAmountTo" />
             </div>
         </div>
         <button disabled>{{ textButton.toUpperCase() }}</button>
