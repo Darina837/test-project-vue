@@ -128,6 +128,8 @@ export default new Vuex.Store({
             }
         },
         change: state => {
+            state.inputAmountFrom = 0;
+            state.inputAmountTo = 0;
             let tmp = state.from;
             state.from = state.to;
             state.to = tmp;

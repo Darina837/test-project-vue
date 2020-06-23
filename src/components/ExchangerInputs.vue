@@ -59,11 +59,21 @@ export default {
                 this.$store.state.to = newValue
             }
         },
-        inputAmountFrom: function inputAmountFrom() {
-            return this.$store.getters.inputAmountFrom;
+        inputAmountFrom: {
+            get: function() {
+                return this.$store.getters.inputAmountFrom;
+            },
+            set: function(newValue) {
+                this.$store.state.inputAmountFrom = newValue
+            }
         },
-        inputAmountTo: function inputAmountTo() {
-            return this.$store.getters.inputAmountTo;
+        inputAmountTo: {
+            get: function() {
+                return this.$store.getters.inputAmountTo;
+            },
+            set: function(newValue) {
+                this.$store.state.inputAmountTo = newValue
+            }
         }
     },
     methods: {
