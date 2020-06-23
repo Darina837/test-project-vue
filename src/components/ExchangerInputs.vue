@@ -40,14 +40,24 @@ export default {
         arrayRatesFrom: function arrayRatesFrom() {
             return this.$store.getters.arrayRatesFrom;
         },
-        from: function from() {
-            return this.$store.getters.from;
+        from: {
+            get: function() {
+                return this.$store.getters.from;
+            },
+            set: function(newValue) {
+                this.$store.state.from = newValue
+            }
         },
         arrayRatesTo: function arrayRatesTo() {
             return this.$store.getters.arrayRatesTo;
         },
-        to: function to() {
-            return this.$store.getters.to;
+        to: {
+            get: function() {
+                return this.$store.getters.to;
+            },
+            set: function(newValue) {
+                this.$store.state.to = newValue
+            }
         },
         inputAmountFrom: function inputAmountFrom() {
             return this.$store.getters.inputAmountFrom;
