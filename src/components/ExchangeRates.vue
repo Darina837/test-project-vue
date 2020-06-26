@@ -15,18 +15,18 @@
 export default {
     name: 'ExchangeRates',
     computed: {
-        from: function from() {
+        from: function() {
             return this.$store.getters.from;
-        },
-        to: function to() {
+        }, //выбранная валюта на отдачу
+        to: function() {
             return this.$store.getters.to;
-        },
-        rateAmount: function rateAmount() {
+        }, //выбранная валюта на получение
+        rateAmount: function() {
             return this.$store.getters.rateAmount;
-        },
-        reserveAmount: function reserveAmount() {
+        }, //курс валюты
+        reserveAmount: function() {
             return this.$store.getters.reserveAmount;
-        }
+        } //резерв валюты на получение
     },
     props: {
         rate: String,

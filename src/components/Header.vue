@@ -3,7 +3,7 @@
         <div class="header-content">
             <router-link to="/"><h1>DLExchanger</h1></router-link>   
             <select v-model="selectedLanguage" @change="setLocale">
-                <option v-for="language in arrayLanguages" :key="language">{{ language }}</option>
+                <option v-for="language in arrayLanguages" :key="language">{{language}}</option>
             </select>
         </div>
     </header>
@@ -14,7 +14,7 @@ export default {
     name: 'Header',
     data() {
         return {
-            selectedLanguage: 'ru',
+            selectedLanguage: this.$i18n.locale,
             arrayLanguages: ['ru', 'ua', 'en']
         }
     },
@@ -26,7 +26,7 @@ export default {
 }
 </script>
 
-<style>
+<style scoped>
     .header {
         background-color: rgb(65, 67, 156);    
         padding: 15px 0;

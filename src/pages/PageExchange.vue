@@ -2,7 +2,7 @@
     <div>
         <Header />
         <main class="main-content">
-            <ExchangerInputs :headerContent="$t('headerContent')" :textGIVE="$t('textGIVE')" :textCount="$t('textCount')" :textGET="$t('textGET')" :textButton="$t('textButton')" />
+            <ExchangerInputs :headerContent="$t('headerContent')" :textGIVE="$t('textGIVE')" :textCount="$t('textCount')" :textGET="$t('textGET')" :textButtonTRUE="$t('textButton.true')" :textButtonFALSE="$t('textButton.false')" :error="$t('error')" />
             <ExchangeRates :rate="$t('rate')" :reserve="$t('reserve')" />
         </main>
     </div>

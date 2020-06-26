@@ -100,6 +100,9 @@ export default new Vuex.Store({
                 }
             }
             return state.reserveAmount
+        },
+        isDisabledButton: state => {
+            return state.isDisabledButton;
         }
     },
     mutations: {
@@ -114,7 +117,8 @@ export default new Vuex.Store({
             state.inputAmountFrom = Number(newValue);
             for(let prop in element) {
                 if(prop === state.to) {
-                    state.inputAmountTo = newValue * element[prop];
+                    let result = newValue * element[prop];
+                    state.inputAmountTo = parseFloat(result.toFixed(2));
                 }
             }
         },
@@ -123,7 +127,8 @@ export default new Vuex.Store({
             state.inputAmountTo = Number(newValue);
             for(let prop in element) {
                 if(prop === state.from) {
-                    state.inputAmountFrom = newValue * element[prop];
+                    let result = newValue * element[prop];
+                    state.inputAmountFrom = parseFloat(result.toFixed(2));
                 }
             }
         },

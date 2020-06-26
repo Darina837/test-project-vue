@@ -11,8 +11,8 @@ Vue.config.productionTip = false
 
 const router = new VueRouter({
   routes: [
-    {path: '/', component: PageExchange},
-    {path: '/success', component: PageSuccess}
+    {path: '/', name: 'home', component: PageExchange},
+    {path: '/success', name: 'success', component: PageSuccess}
   ]
 })
 
